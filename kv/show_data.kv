@@ -1,11 +1,30 @@
-# show_data.kv
-GridLayout:
-    cols: 5
-    orientation: 'lr-tb'  # Corrected orientation
-    size_hint_y: None
+BoxLayout:
+    orientation: 'vertical'
+    padding: dp(20)
+    spacing: dp(15)
+
+    # ===== هذا الجزء العلوي فيه الزر بالصورة =====
     BoxLayout:
+        orientation: 'horizontal'
         size_hint_y: None
-        height: 40
+        height: dp(60)  # ارتفاع الجزء العلوي
+        Button:
+            size_hint: None, None
+            size: dp(50), dp(50)
+            on_release: app.show_home_screen()
+            Image:
+                source: 'kv/images/image.png'
+                allow_stretch: True
+                keep_ratio: True
+
+    # ===== هذا الجزء السفلي فيه الجدول =====
+    GridLayout:
+        cols: 5
+        size_hint_y: None
+        row_default_height: dp(40)
+        row_force_default: True
+        spacing: dp(10)
+
         Label:
             text: 'student'
             bold: True
@@ -21,18 +40,3 @@ GridLayout:
         Label:
             text: 'to'
             bold: True
-    BoxLayout:
-        orientation: 'horizontal'
-        size_hint_y: None
-        height: 40
-        Button:
-            text: 'Top Right'
-            size_hint: None, None
-            size: '100dp', '40dp'
-            pos_hint: {'right': 1, 'top': 1}  # This positions it in the top-right corner
-            Image:
-                source: 'kv/images/image.png'  # Specify your icon image here
-                allow_stretch: True
-                keep_ratio: True
-                size: '100dp', '100dp'  # Manually set the size
-

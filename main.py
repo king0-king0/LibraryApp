@@ -46,33 +46,27 @@ class Main(MDApp):
 
         return self.screen_manager
 
-    def show_home_screen(self, dt):
+    def show_home_screen(self, dt=None):
         self.clear_screen()
-        # Load home screen
-        home_screen = Builder.load_file("./kv/home_screen.kv")
+        # نجهز الشاشة الجديدة
+        home_screen_widget = Builder.load_file("./kv/home_screen.kv")
         screen = MDScreen(name="home")
-        screen.add_widget(home_screen)
-
+        screen.add_widget(home_screen_widget)
         self.screen_manager.add_widget(screen)
         self.screen_manager.current = "home"
 
     def clear_screen(self):
-        # Check if "home" screen exists before clearing
+        # إذا فيه شاشة home، نحذفها من مدير الشاشات
         if self.screen_manager.has_screen("home"):
             home_screen = self.screen_manager.get_screen("home")
-            home_screen.clear_widgets()  # Clear the existing widgets
-        else:
-            # If screen doesn't exist, load it from the .kv file and add it
-            home_screen = Builder.load_file("./kv/home_screen.kv")
-            screen = MDScreen(name="home")
-            screen.add_widget(home_screen)
-            self.screen_manager.add_widget(screen)
+            self.screen_manager.remove_widget(home_screen)
 
     def show_screen(self):
         self.clear_screen()
-        home_screen = Builder.load_file("./kv/show_data.kv")
+        show_data_widget = Builder.load_file("./kv/show_data.kv")
         screen = MDScreen(name="home")
-        screen.add_widget(home_screen)
+        screen.add_widget(show_data_widget)
+
         self.screen_manager.add_widget(screen)
         self.screen_manager.current = "home"
 
@@ -106,8 +100,5 @@ class Main(MDApp):
         self.screen_manager.get_screen("home").children[0].ids.book_code.text = ""
 
 
-
 if __name__ == "__main__":
     Main().run()
-
-
