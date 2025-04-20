@@ -1,0 +1,122 @@
+# home_screen.kv
+MDScreen:
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: dp(20)
+            spacing: dp(15)
+
+            ScrollView:
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+                    spacing: dp(15)
+
+                    MDLabel:
+                        text: app.get_text("our library")
+                        halign: 'center'
+                        font_style: 'H4'
+                        theme_text_color: 'Primary'
+                        font_name: 'kv/font/NotoNaskhArabic-VariableFont_wght.ttf'
+                        size_hint_y: None
+                        height: self.texture_size[1] + dp(30)
+
+                    # --- Student Name Field ---
+                    MyMDTextField:
+                        id: student_name
+                        hint_text: app.get_text("student name")
+                        text: ""
+                        mode: "rectangle"
+                        size_hint: 0.9, None
+                        height: dp(50)
+                        pos_hint: {"center_x": 0.5}
+
+                    # --- Book Name Field ---
+                    MyMDTextField:
+                        id: book_name
+                        hint_text: app.get_text("name of the book")
+                        text: ""
+                        mode: "rectangle"
+                        size_hint: 0.9, None
+                        height: dp(50)
+                        pos_hint: {"center_x": 0.5}
+
+                    # --- Book Code Field ---
+                    MyMDTextField:
+                        id: book_code
+                        hint_text: app.get_text("code of book")
+                        text: ""
+                        mode: "rectangle"
+                        size_hint: 0.9, None
+                        height: dp(50)
+                        pos_hint: {"center_x": 0.5}
+
+
+                    # --- Action Buttons (Add, Show, Late Book) ---
+                    GridLayout:
+                        cols: 3
+                        spacing: dp(10)
+                        size_hint: 0.9, None
+                        height: dp(50)
+                        pos_hint: {"center_x": 0.5}
+
+                        MDRaisedButton:
+                            text: app.get_text("add")
+                            font_name: 'kv/font/NotoNaskhArabic-VariableFont_wght.ttf'
+                            size_hint_x: 1
+                            on_release: app.add()
+
+                        MDRaisedButton:
+                            text: app.get_text("show")
+                            font_name: 'kv/font/NotoNaskhArabic-VariableFont_wght.ttf'
+                            size_hint_x: 1
+                            on_release: app.show_screen()
+
+                        MDRaisedButton:
+                            text: app.get_text("later book")
+                            font_name: 'kv/font/NotoNaskhArabic-VariableFont_wght.ttf'
+                            size_hint_x: 1
+                            # on_release: app.check_overdue()
+
+                    MDSeparator:
+                        height: dp(1)
+
+                    # --- Delete Section ---
+                    MDLabel:
+                        text: app.get_text("delete")
+                        halign: 'center'
+                        font_style: 'H6'
+                        theme_text_color: 'Primary'
+                        font_name: 'kv/font/NotoNaskhArabic-VariableFont_wght.ttf'
+                        size_hint_y: None
+                        height: self.texture_size[1] + dp(20)
+
+                    MyMDTextField:
+                        id: delete_student_name
+                        hint_text: app.get_text("student name")
+                        text: ""
+                        mode: "rectangle"
+                        size_hint: 0.9, None
+                        height: dp(50)
+                        pos_hint: {"center_x": 0.5}
+
+                    MDRaisedButton:
+                        text: app.get_text("delete")
+                        font_name: 'kv/font/NotoNaskhArabic-VariableFont_wght.ttf'
+                        size_hint: 0.9, None
+                        height: dp(50)
+                        pos_hint: {"center_x": 0.5}
+                        # on_release: app.delete_borrowing()
+
+                    # --- Footer Text ---
+                    MDLabel:
+                        text: "the copyright keep for iyad & mohamed"
+                        halign: 'center'
+                        theme_text_color: 'Secondary'
+                        size_hint_y: None
+                        height: self.texture_size[1] + dp(20)
+        
+

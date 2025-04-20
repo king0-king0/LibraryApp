@@ -1,0 +1,38 @@
+# show_data.kv
+GridLayout:
+    cols: 5
+    orientation: 'lr-tb'  # Corrected orientation
+    size_hint_y: None
+    BoxLayout:
+        size_hint_y: None
+        height: 40
+        Label:
+            text: 'student'
+            bold: True
+        Label:
+            text: 'book'
+            bold: True
+        Label:
+            text: 'code'
+            bold: True        
+        Label:
+            text: 'from'
+            bold: True
+        Label:
+            text: 'to'
+            bold: True
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: 40
+        Button:
+            text: 'Top Right'
+            size_hint: None, None
+            size: '100dp', '40dp'
+            pos_hint: {'right': 1, 'top': 1}  # This positions it in the top-right corner
+            Image:
+                source: 'kv/images/image.png'  # Specify your icon image here
+                allow_stretch: True
+                keep_ratio: True
+                size: '100dp', '100dp'  # Manually set the size
+
